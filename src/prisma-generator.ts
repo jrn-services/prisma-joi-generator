@@ -3,6 +3,7 @@ import { EnvValue, GeneratorOptions } from '@prisma/generator-helper';
 import removeDir from './utils/removeDir';
 import { promises as fs } from 'fs';
 import Transformer from './transformer';
+import matchFolderName from './utils/matchFolderName';
 
 export async function generate(options: GeneratorOptions) {
   const outputDir = parseEnvValue(options.generator.output as EnvValue);
@@ -17,6 +18,8 @@ export async function generate(options: GeneratorOptions) {
     datamodel: options.datamodel,
     previewFeatures: prismaClientProvider?.previewFeatures,
   });
+
+  const models = prismaClientDmmf.datamodel.models.map(model => model.name)
 
   Transformer.setOutputPath(outputDir);
 
@@ -40,7 +43,9 @@ export async function generate(options: GeneratorOptions) {
   ) {
     const fields = prismaClientDmmf.schema.inputObjectTypes.prisma[i]?.fields;
     const name = prismaClientDmmf.schema.inputObjectTypes.prisma[i]?.name;
-    const obj = new Transformer({ name, fields });
+    const modelNameFolder = matchFolderName(models, name)
+
+    const obj = new Transformer({ name, fields, modelNameFolder });
     await obj.printSchemaObjects();
   }
 

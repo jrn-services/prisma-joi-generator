@@ -1,6 +1,6 @@
 {
-  "name": "prisma-joi-generator",
-  "version": "0.2.0",
+  "name": "@deyoungjd/prisma-joi-generator",
+  "version": "0.2.3",
   "description": "Prisma +2 generator to emit Joi schemas from your Prisma schema",
   "repository": "https://github.com/omar-dulaimi/prisma-joi-generator",
   "bin": {
@@ -40,5 +40,5 @@
     "url": "https://github.com/omar-dulaimi/prisma-joi-generator/issues"
   },
   "homepage": "https://github.com/omar-dulaimi/prisma-joi-generator#readme",
-  "private": true
+  "private": false
 }
