@@ -12,6 +12,39 @@ datasource db {
   url      = "file:./dev.db"
 }
 
+model Bible {
+  id                Int      @id @default(autoincrement())
+  isActive          Int      @default(0)
+  isBibleCom        Int      @default(0)
+  isBibleGatewayCom Int      @default(0)
+  languageId        Int      @default(0)
+  abbreviation      String?
+  name              String?
+  createdAt         DateTime @default(now())
+  modifiedAt        DateTime @default(now()) @updatedAt
+  modifiedBy        Int?
+  isArchived        Boolean  @default(false)
+  createdBy         Int?
+
+  @@map("bible")
+}
+
+model BibleBook {
+  id            Int      @id @default(autoincrement())
+  abbreviation  String?
+  numericOrder  Int      @default(0)
+  name          String
+  maxChapters   Int      @default(0)
+  codeBible_com String?
+  createdAt     DateTime @default(now())
+  modifiedAt    DateTime @default(now()) @updatedAt
+  modifiedBy    Int?
+  isArchived    Boolean  @default(false)
+  createdBy     Int?
+
+  @@map("bibleBook")
+}
+
 model User {
   id    Int     @id @default(autoincrement())
   email String  @unique
