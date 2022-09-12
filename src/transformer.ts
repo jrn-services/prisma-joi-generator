@@ -64,13 +64,17 @@ export default class Transformer {
       'UpdateManyWithWhereWithout',
       'UpdateWithout',
       'UpdateWithWhereUniqueWithout',
+      'UpdateOneRequiredWithout',
       'UpsertWithWhereUniqueWithout',
+      'UpsertWithout',
       'AvgOrderByAggregateInput',
       'CountOrderByAggregateInput',
       'CreateInput',
       'CreateNestedManyWithout',
       'CreateOrConnectWithout',
       'CreateWithout',
+      'CreateMany',
+      'CreateNestedOneWithout',
       'ListRelationFilter',
       'MaxOrderByAggregateInput',
       'MinOrderByAggregateInput',
@@ -81,7 +85,8 @@ export default class Transformer {
       'ScalarWhereWithAggregatesInput',
       'SumOrderByAggregateInput',
       'WhereInput',
-      'WhereUniqueInput'
+      'WhereUniqueInput',
+      'RelationFilter'
     ]
     const folderName = filename.split('/')
 
